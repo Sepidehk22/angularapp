@@ -1,0 +1,15 @@
+import { AzureFunction, Context, HttpRequest } from "@azure/functions";
+
+const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+    context.res = {
+        status: 200,
+        body: {
+            clientId: process.env["CLIENT_ID"],
+            authority: process.env["AUTHORITY"],
+            redirectUri: process.env["REDIRECT_URI"],
+            postLogoutRedirectUri: process.env["POST_LOGOUT_REDIRECT_URI"]
+        }
+    };
+};
+
+export default httpTrigger;
